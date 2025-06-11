@@ -13,6 +13,7 @@ app.use(express.json( { type: 'application/vnd.api+json'}) );
 app.use(cors() );
 
 app.use(index);
-//app.use('/API/, usuarioRoute');
+app.use('/API', usuarioRoute);
+
 
 module.exports = app;
