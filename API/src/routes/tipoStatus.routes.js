@@ -4,18 +4,18 @@ const router = require('express-promise-router')();
 const tipoStatusController = require('../controllers/tipoStatus.controller');
 
 // Criar novo tipoStatus: (POST): localhost:3000/API/tipoStatus
-router.post('/tipoStatus', tipoStatusController.createTipoStatus);
+router.post('/tipostatus', tipoStatusController.createTipoStatus);
 
 // Listar todos os tipoStatus: (GET): localhost:3000/API/tipoStatus
-router.get('/tipoStatus', tipoStatusController.listAllTipoStatus);
+router.get('/tipostatus', tipoStatusController.listAllTipoStatus);
 
 // Listar tipoStatus por Id: (GET): localhost:3000/API/tipoStatus/:id
-router.get('/tipoStatus/:id', tipoStatusController.findTipoStatusById);
+router.get('/tipostatus/:id', tipoStatusController.findTipoStatusById);
 
 // Atualizar tipoStatus por Id: (PUT): localhost:3000/API/tipoStatus/:id
-router.put('/tipoStatus/:id', tipoStatusController.updateTipoStatusById);
+router.put('/tipostatus/:id', tipoStatusController.updateTipoStatusById);
 
 // Deletar tipoStatus por Id: (DELETE): localhost:3000/API/tipoStatus/:id
-router.delete('/tipoStatus/:id', tipoStatusController.deleteTipoStatusById);
+router.delete('/tipostatus/:id', tipoStatusController.deleteTipoStatusById);
 
 module.exports = router;

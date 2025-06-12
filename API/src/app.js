@@ -23,4 +23,13 @@ app.use('/API', tipoSuporteRoute);
 app.use('/API', chamadoRoute);
 app.use('/API', interacaoRoute);
 
+//Para testar erros com o banco, utilizar o codigo abaixo:
+
+// console.log('Rotas registradas:');
+// app._router.stack.forEach((r) => {
+//   if (r.route && r.route.path) {
+//     console.log(`${Object.keys(r.route.methods)[0].toUpperCase()} ${r.route.path}`);
+//   }
+// });
+
 module.exports = app;
