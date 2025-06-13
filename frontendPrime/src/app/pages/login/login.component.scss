@@ -1,0 +1,49 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--surface-ground);
+  padding: 2rem;
+
+  .login-card {
+    width: 100%;
+    max-width: 450px;
+
+    ::ng-deep {
+      .p-card {
+        .p-card-body {
+          padding: 2rem;
+        }
+
+        .p-card-content {
+          padding: 0;
+        }
+      }
+
+      .p-password {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+
+      .p-button {
+        padding: 0.75rem;
+      }
+    }
+  }
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-600 {
+  color: var(--text-color-secondary);
+} 
