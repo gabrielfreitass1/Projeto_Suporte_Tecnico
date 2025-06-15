@@ -15,11 +15,22 @@ label {
   margin-bottom: 5px;
 }
 
-input {
+input, select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 14px;
+}
+
+select {
+  //background-color: white;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #28a745;
+  }
 }
 
 button {
@@ -30,8 +41,18 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
 
   &:hover {
     background-color: #218838;
+  }
+}
+
+a {
+  color: #28a745;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
 } 

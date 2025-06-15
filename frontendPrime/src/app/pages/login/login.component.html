@@ -1,33 +1,15 @@
 <div class="login-container">
-  <p-card header="Login" styleClass="login-card">
-    <form (ngSubmit)="onSubmit()">
-      <div class="field">
-        <label for="email" class="block mb-2">Email</label>
-        <span class="p-input-icon-left w-full">
-          <i class="pi pi-envelope"></i>
-          <input id="email" type="email" pInputText [(ngModel)]="email" name="email" class="w-full" placeholder="Digite seu email" required>
-        </span>
-      </div>
-
-      <div class="field mt-4">
-        <label for="password" class="block mb-2">Senha</label>
-        <span class="p-input-icon-left w-full">
-          <i class="pi pi-lock"></i>
-          <p-password id="password" [(ngModel)]="password" name="password" [toggleMask]="true" [feedback]="false" styleClass="w-full" placeholder="Digite sua senha" required></p-password>
-        </span>
-      </div>
-
-      <div class="flex justify-content-between align-items-center mt-4">
-        <p-checkbox [binary]="true" [(ngModel)]="rememberMe" name="rememberMe" label="Lembrar-me"></p-checkbox>
-        <a class="text-primary no-underline">Esqueceu a senha?</a>
-      </div>
-
-      <p-button type="submit" label="Entrar" styleClass="w-full mt-4" [loading]="loading"></p-button>
-    </form>
-
-    <div class="text-center mt-4">
-      <span class="text-600">Não tem uma conta?</span>
-      <a routerLink="/register" class="text-primary font-medium no-underline ml-2">Registre-se</a>
+  <h2 align="center">Login</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">CPF:</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required>
     </div>
-  </p-card>
+    <div class="form-group">
+      <label for="password">Senha:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+    </div>
+    <button type="submit" [disabled]="loading">{{ loading ? 'Entrando...' : 'Entrar' }}</button>
+  </form>
+  <p>Não tem uma conta? <a routerLink="/register">Registre-se</a></p>
 </div> 
