@@ -4,13 +4,23 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+// PrimeNG
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink
+    RouterLink,
+    CardModule,
+    InputTextModule,
+    PasswordModule,
+    ButtonModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

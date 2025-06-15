@@ -4,10 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
+// PrimeNG
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
+
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    CardModule,
+    InputTextModule,
+    PasswordModule,
+    ButtonModule,
+    DropdownModule,
+    InputMaskModule
+  ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
@@ -27,10 +45,10 @@ export class RegisterComponent {
   ];
 
   niveisTecnicos = [
-    { label: 'Estagiário', value: 'ESTAGIARIO' },
-    { label: 'Técnico N1', value: 'TECNICO_N1' },
-    { label: 'Técnico N2', value: 'TECNICO_N2' },
-    { label: 'Técnico N3', value: 'TECNICO_N3' }
+    { label: 'Estagiário', value: '0' },
+    { label: 'Técnico N1', value: '1' },
+    { label: 'Técnico N2', value: '2' },
+    { label: 'Técnico N3', value: '3' }
   ];
 
   constructor(

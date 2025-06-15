@@ -1,9 +1,55 @@
 .register-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--surface-ground);
+  padding: 2rem;
+
+  .register-card {
+    width: 100%;
+    max-width: 450px;
+
+    ::ng-deep {
+      .p-card {
+        .p-card-body {
+          padding: 2rem;
+        }
+
+        .p-card-content {
+          padding: 0;
+        }
+      }
+
+      .p-password {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+
+      .p-dropdown {
+        width: 100%;
+      }
+
+      .p-button {
+        padding: 0.75rem;
+      }
+    }
+  }
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-600 {
+  color: var(--text-color-secondary);
 }
 
 .form-group {
