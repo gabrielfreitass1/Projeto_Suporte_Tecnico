@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -29,11 +29,21 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   loading: boolean = false;
+  userForm!: FormGroup;
 
   constructor(
     private router: Router,
+    private fb: FormBuilder,
     private authService: AuthService
-  ) {}
+  ) { }
+
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    },
+    );
+  }
 
   onSubmit() {
     this.loading = true;

@@ -1,7 +1,7 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+import Aura from '@primeng/themes/Aura';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
@@ -13,8 +13,12 @@ export const appConfig: ApplicationConfig = {
         provideAnimationsAsync(),
         providePrimeNG({
             theme: {
-                preset: Aura
-            }
+                preset: Aura,
+                options: {
+                    prefix: 'p',
+                    darkModeSelector: 'false',
+                    cssLayer: true
+                }            },
         })
     ]
 };

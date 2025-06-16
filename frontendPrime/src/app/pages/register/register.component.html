@@ -5,7 +5,8 @@
         <label for="nome" class="block mb-2">Nome</label>
         <span class="p-input-icon-left w-full">
           <i class="pi pi-user"></i>
-          <input id="nome" type="text" pInputText [(ngModel)]="nome" name="nome" class="w-full" placeholder="Digite seu nome" required>
+          <input id="nome" type="text" pInputText [(ngModel)]="nome" name="nome" class="w-full"
+            placeholder="Digite seu nome" required>
         </span>
       </div>
 
@@ -13,7 +14,9 @@
         <label for="cpf" class="block mb-2">CPF</label>
         <span class="p-input-icon-left w-full">
           <i class="pi pi-id-card"></i>
-          <p-inputMask id="cpf" [(ngModel)]="cpf" name="cpf" mask="999.999.999-99" placeholder="Digite seu CPF" class="w-full" required></p-inputMask>
+          <div class="flex-auto">
+            <p-inputmask [(ngModel)]="cpf" placeholder="Insira o seu cpf" class="w-full" mask="999.999.999-99" />
+          </div>
         </span>
       </div>
 
@@ -21,7 +24,8 @@
         <label for="email" class="block mb-2">Email</label>
         <span class="p-input-icon-left w-full">
           <i class="pi pi-envelope"></i>
-          <input id="email" type="email" pInputText [(ngModel)]="email" name="email" class="w-full" placeholder="Digite seu email" required>
+          <input id="email" type="email" pInputText [(ngModel)]="email" name="email" class="w-full"
+            placeholder="Digite seu email" required>
         </span>
       </div>
 
@@ -29,7 +33,8 @@
         <label for="senha" class="block mb-2">Senha</label>
         <span class="p-input-icon-left w-full">
           <i class="pi pi-lock"></i>
-          <p-password id="senha" [(ngModel)]="senha" name="senha" [toggleMask]="true" [feedback]="false" styleClass="w-full" placeholder="Digite sua senha" required></p-password>
+          <p-password id="senha" [(ngModel)]="senha" name="senha" [toggleMask]="true" [feedback]="false"
+            styleClass="w-full" placeholder="Digite sua senha" required></p-password>
         </span>
       </div>
 
@@ -37,18 +42,21 @@
         <label for="confirmarSenha" class="block mb-2">Confirmar Senha</label>
         <span class="p-input-icon-left w-full">
           <i class="pi pi-lock"></i>
-          <p-password id="confirmarSenha" [(ngModel)]="confirmarSenha" name="confirmarSenha" [toggleMask]="true" [feedback]="false" styleClass="w-full" placeholder="Confirme sua senha" required></p-password>
+          <p-password id="confirmarSenha" [(ngModel)]="confirmarSenha" name="confirmarSenha" [toggleMask]="true"
+            [feedback]="false" styleClass="w-full" placeholder="Confirme sua senha" required></p-password>
         </span>
       </div>
 
       <div class="field mt-4">
         <label for="sexo" class="block mb-2">Sexo</label>
-        <p-dropdown id="sexo" [(ngModel)]="sexo" [options]="sexos" name="sexo" placeholder="Selecione o sexo" styleClass="w-full" required></p-dropdown>
+        <p-dropdown id="sexo" [(ngModel)]="sexo" [options]="sexos" name="sexo" placeholder="Selecione o sexo"
+          styleClass="w-full" required></p-dropdown>
       </div>
 
       <div class="field mt-4">
         <label for="nivelTecnico" class="block mb-2">Nível Técnico</label>
-        <p-dropdown id="nivelTecnico" [(ngModel)]="nivelTecnico" [options]="niveisTecnicos" name="nivelTecnico" placeholder="Selecione o nível técnico" styleClass="w-full" required></p-dropdown>
+        <p-dropdown id="nivelTecnico" [(ngModel)]="nivelTecnico" [options]="niveisTecnicos" name="nivelTecnico"
+          placeholder="Selecione o nível técnico" styleClass="w-full" required></p-dropdown>
       </div>
 
       <p-button type="submit" label="Registrar" styleClass="w-full mt-4" [rounded]="true"></p-button>
@@ -56,7 +64,7 @@
 
     <div class="text-center mt-4">
       <span class="text-600">Já tem uma conta?</span>
-      <a routerLink="/login" class="text-primary font-medium no-underline ml-2">Faça login</a>
+      <a routerLink="/login" class="text-primary font-medium no-underline ml-2"> Faça login</a>
     </div>
   </p-card>
-</div> 
+</div>

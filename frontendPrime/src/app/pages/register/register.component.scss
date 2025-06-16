@@ -1,24 +1,17 @@
-.register-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: var(--surface-ground);
-  padding: 2rem;
+:host ::ng-deep {
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #a9a9a9;
+    padding: 2rem;
 
-  .register-card {
-    width: 100%;
-    max-width: 450px;
+    .register-card {
+      width: 100%;
 
-    ::ng-deep {
-      .p-card {
-        .p-card-body {
-          padding: 2rem;
-        }
-
-        .p-card-content {
-          padding: 0;
-        }
+      .p-card-body {
+        width: 600px;
       }
 
       .p-password {
@@ -38,67 +31,68 @@
       }
     }
   }
-}
 
-.field {
-  margin-bottom: 1.5rem;
-}
+  .field {
+    margin-bottom: 1.5rem;
+  }
 
-.text-primary {
-  color: var(--primary-color);
-}
+  .text-primary {
+    color: var(--primary-color);
+  }
 
-.text-600 {
-  color: var(--text-color-secondary);
-}
+  .text-600 {
+    color: var(--text-color-secondary);
+  }
 
-.form-group {
-  margin-bottom: 15px;
-}
+  .form-group {
+    margin-bottom: 15px;
+  }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
 
-input, select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-}
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
 
-select {
-  //background-color: white;
-  cursor: pointer;
+  select {
+    //background-color: white;
+    cursor: pointer;
 
-  &:focus {
-    outline: none;
-    border-color: #28a745;
+    &:focus {
+      outline: none;
+      border-color: #28a745;
+    }
+  }
+
+  // button {
+  //   width: 100%;
+  //   padding: 10px;
+  //   background-color: #28a745;
+  //   color: white;
+  //   border: none;
+  //   border-radius: 4px;
+  //   cursor: pointer;
+  //   font-size: 16px;
+
+  //   &:hover {
+  //     background-color: #218838;
+  //   }
+  // }
+
+  a {
+    color: #28a745;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-
-  &:hover {
-    background-color: #218838;
-  }
-}
-
-a {
-  color: #28a745;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-} 

@@ -1,0 +1,96 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h1>Dashboard de Chamados</h1>  
+</div>
+  
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-6">
+    <ng-template #start>
+      <p-button
+        label="Criar Chamado"
+        icon="pi pi-plus"
+        class="mr-2"
+        (onClick)="openNew()"
+      /> 
+    </ng-template>
+
+    <ng-template #end>
+      <p-iconfield iconPosition="left">
+        <i class="pi pi-search" pSuffix></i>
+        <input
+          pInputText
+          type="text"
+          placeholder="Buscar..."
+        />
+      </p-iconfield>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #dt
+    [value]="chamados"
+    [rows]="10"
+    [paginator]="true"
+    [globalFilterFields]="['id', 'titulo', 'dataAbertura', 'dataFechamento', 'nivelProblema', 'status']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    dataKey="id"
+    currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} registros"
+    [showCurrentPageReport]="true"
+    [rowHover]="true"
+  >
+<ng-template #caption>
+  <div class="flex items-center justify-between" *ngIf="dt">
+    <h2 class="m-0">Gerenciar Chamados</h2>
+  </div>
+</ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Data de Abertura</th>
+        <th>Data de Fechamento</th>
+        <th>Nível do Problema</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-chamado>
+      <tr>
+        <td>{{ chamado.id }}</td>
+        <td>{{ chamado.titulo }}</td>
+        <td>{{ chamado.dataAbertura }}</td>
+        <td>{{ chamado.dataFechamento }}</td>
+        <td>
+          <p-tag
+            [value]="chamado.nivelProblema"
+            [severity]="getSeverity(chamado.nivelProblema)"
+          />
+        </td>
+        <td>
+          <p-tag
+            [value]="chamado.status"
+            [severity]="getStatusSeverity(chamado.status)"
+          />
+        </td>
+        <td>
+          <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" label="Editar" (click)="editChamado(chamado)" />
+          <p-button icon="pi pi-send" class="mr-2" [rounded]="true" [outlined]="true" label="Encaminhar" (click)="editChamado(chamado)" />
+          <p-button icon="pi pi-check" class="mr-2" [rounded]="true" [outlined]="true" label="Finalizar" (click)="editChamado(chamado)" />
+          <p-button icon="pi pi-trash" class="mr-2" [rounded]="true" [outlined]="true" label="Apagar" (click)="editChamado(chamado)" />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template #summary>
+      <div class="flex items-center justify-between">
+        Total de chamados: {{ chamados.length || 0 }}
+      </div>
+    </ng-template>
+  </p-table>
+
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>
+
