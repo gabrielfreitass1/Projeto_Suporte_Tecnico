@@ -10,14 +10,19 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService, PrimeIcons } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { IconFieldModule } from 'primeng/iconfield';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { TextareaModule } from 'primeng/textarea';
 
 interface Chamado {
   id: string;
   titulo: string;
+  descricao: string;
   dataAbertura: Date;
   dataFechamento?: Date;
-  nivel: string;
+  nivelProblema: string;
   status: string;
+  tecnico: string;
 }
 
 @Component({
@@ -37,6 +42,9 @@ interface Chamado {
     TagModule,
     ConfirmDialogModule,
     IconFieldModule,
+    DialogModule,
+    DropdownModule,
+    TextareaModule,
   ],
 })
 export class TableChamadosComponent implements OnInit {
@@ -48,16 +56,21 @@ export class TableChamadosComponent implements OnInit {
   submitted: boolean = false;
 
   niveisProblema = [
-    { label: 'Baixo', value: 'Baixo' },
-    { label: 'Médio', value: 'Médio' },
-    { label: 'Alto', value: 'Alto' },
-    { label: 'Crítico', value: 'Crítico' },
+    { label: 'N1', value: 'N1' },
+    { label: 'N2', value: 'N2' },
+    { label: 'N3', value: 'N3' },
   ];
 
-  statusOptions = [
+  statuses = [
     { label: 'Aberto', value: 'Aberto' },
     { label: 'Em Andamento', value: 'Em Andamento' },
     { label: 'Fechado', value: 'Fechado' },
+  ];
+
+  tecnicos = [
+    { nome: 'João Silva', id: '1' },
+    { nome: 'Maria Santos', id: '2' },
+    { nome: 'Pedro Oliveira', id: '3' },
   ];
 
   ngOnInit() {
@@ -69,18 +82,22 @@ export class TableChamadosComponent implements OnInit {
       {
         id: 'CH001',
         titulo: 'Erro ao acessar o sistema',
+        descricao: 'Não consigo acessar o sistema principal',
         dataAbertura: new Date('2025-06-01'),
         dataFechamento: undefined,
-        nivel: 'Crítico',
+        nivelProblema: 'N1',
         status: 'Aberto',
+        tecnico: '1'
       },
       {
         id: 'CH002',
         titulo: 'Solicitação de atualização',
+        descricao: 'Preciso atualizar o software',
         dataAbertura: new Date('2025-06-05'),
         dataFechamento: new Date('2025-06-10'),
-        nivel: 'Médio',
+        nivelProblema: 'N2',
         status: 'Fechado',
+        tecnico: '2'
       },
     ];
   }
@@ -89,14 +106,33 @@ export class TableChamadosComponent implements OnInit {
     this.chamado = {
       id: '',
       titulo: '',
+      descricao: '',
       dataAbertura: new Date(),
       dataFechamento: undefined,
-      nivel: '',
+      nivelProblema: '',
       status: '',
+      tecnico: '',
     };
     this.submitted = false;
     this.chamadoDialog = true;
   }
+
+openEncaminhamento(chamado: Chamado) {
+  this.chamado = { ...chamado };
+  this.chamado.nivelProblema = 'N2';
+  this.chamadoDialog = true;
+}
+
+openFinalizar(chamado: Chamado) {
+  this.chamado = { ...chamado };
+  this.chamado.status = 'Fechado';
+  this.chamadoDialog = true;
+}
+openAtender(chamado: Chamado) {
+  this.chamado = { ...chamado };
+  this.chamado.status = 'Em Andamento';
+  this.chamadoDialog = true;
+}
 
   editChamado(chamado: Chamado) {
     this.chamado = { ...chamado };
@@ -142,11 +178,11 @@ export class TableChamadosComponent implements OnInit {
   getStatusSeverity(status: string) {
     switch (status) {
       case 'Aberto':
-        return 'info';
-      case 'Em Andamento':
-        return 'warning';
-      case 'Fechado':
         return 'success';
+      case 'Em Andamento':
+        return 'warn';
+      case 'Fechado':
+        return 'danger';
       default:
         return 'info';
     }
@@ -154,16 +190,14 @@ export class TableChamadosComponent implements OnInit {
 
   getSeverity(nivel: string) {
     switch (nivel) {
-      case 'Crítico':
-        return 'danger';
-      case 'Alto':
-        return 'warning';
-      case 'Médio':
-        return 'info';
-      case 'Baixo':
+      case 'N1':
         return 'success';
+      case 'N2':
+        return 'warn';
+      case 'N3':
+        return 'danger';
       default:
-        return 'info';
+        return '';
     }
   }
 }

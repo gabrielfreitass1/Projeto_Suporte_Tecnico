@@ -77,9 +77,10 @@
         </td>
         <td>
           <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" label="Editar" (click)="editChamado(chamado)" />
-          <p-button icon="pi pi-send" class="mr-2" [rounded]="true" [outlined]="true" label="Encaminhar" (click)="editChamado(chamado)" />
-          <p-button icon="pi pi-check" class="mr-2" [rounded]="true" [outlined]="true" label="Finalizar" (click)="editChamado(chamado)" />
-          <p-button icon="pi pi-trash" class="mr-2" [rounded]="true" [outlined]="true" label="Apagar" (click)="editChamado(chamado)" />
+          <p-button icon="pi pi-send" class="mr-2" [rounded]="true" [outlined]="true" label="Encaminhar" (click)="openEncaminhamento(chamado)" />
+          <p-button icon="pi pi-check" class="mr-2" [rounded]="true" [outlined]="true" label="Finalizar" (click)="openFinalizar(chamado)" />
+          <p-button icon="pi pi-headset" class="mr-2" [rounded]="true" [outlined]="true" label="Atender" (click)="openAtender(chamado)" />
+          <p-button icon="pi pi-trash" class="mr-2" [rounded]="true" [outlined]="true" label="Apagar" (click)="deleteChamado(chamado)" />
         </td>
       </tr>
     </ng-template>
@@ -91,6 +92,42 @@
     </ng-template>
   </p-table>
 
+  <p-dialog [(visible)]="chamadoDialog" [style]="{ width: '450px' }" header="Detalhes do Chamado" [modal]="true">
+    <ng-template #content>
+        <div class="flex flex-col gap-6">
+            <div>
+                <label for="titulo" class="block font-bold mb-3">Título</label>
+                <input type="text" pInputText id="titulo" [(ngModel)]="chamado.titulo" required autofocus fluid />
+                <small class="text-red-500" *ngIf="submitted && !chamado.titulo">Título é obrigatório.</small>
+            </div>
+
+            <div>
+                <label for="descricao" class="block font-bold mb-3">Descrição</label>
+                <textarea id="descricao" pTextarea [(ngModel)]="chamado.descricao" required rows="3" cols="20" fluid></textarea>
+            </div>
+
+            <div>
+                <label for="nivelProblema" class="block font-bold mb-3">Nível do Problema</label>
+                <p-dropdown [(ngModel)]="chamado.nivelProblema" appendTo="body" [options]="niveisProblema" optionLabel="label" placeholder="Selecione o Nível" fluid />
+            </div>
+
+            <div>
+                <label for="status" class="block font-bold mb-3">Status</label>
+                <p-dropdown [(ngModel)]="chamado.status" appendTo="body" [options]="statuses" optionLabel="label" placeholder="Selecione o Status" fluid />
+            </div>
+
+            <div>
+                <label for="tecnico" class="block font-bold mb-3">Técnico Responsável</label>
+                <p-dropdown [(ngModel)]="chamado.tecnico" appendTo="body" [options]="tecnicos" optionLabel="nome" placeholder="Selecione o Técnico" fluid />
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #footer>
+        <p-button label="Cancelar" icon="pi pi-times" text (click)="hideDialog()" />
+        <p-button label="Salvar" icon="pi pi-check" (click)="saveChamado()" />
+    </ng-template>
+  </p-dialog>
   <p-confirmDialog [style]="{ width: '450px' }" />
 </div>
 
