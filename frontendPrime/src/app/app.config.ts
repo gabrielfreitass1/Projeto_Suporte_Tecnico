@@ -18,7 +18,8 @@ export const appConfig: ApplicationConfig = {
                     prefix: 'p',
                     darkModeSelector: 'false',
                     cssLayer: true
-                }            },
+                }
+            },
         })
     ]
 };

@@ -63,10 +63,10 @@ exports.listAllChamados = async (req, res) => {
              ts.descricao AS status,
              tp.descricao AS tipo_suporte
       FROM chamado c
-      JOIN usuario u1 ON c.criado_por_id = u1.id
-      JOIN usuario u2 ON c.tecnico_atual_id = u2.id
-      JOIN tipo_status ts ON c.id_status = ts.id
-      JOIN tipo_suporte tp ON c.id_suporte = tp.id
+      LEFT JOIN usuario u1 ON c.criado_por_id = u1.id
+      LEFT JOIN usuario u2 ON c.tecnico_atual_id = u2.id
+      LEFT JOIN tipo_status ts ON c.id_status = ts.id
+      LEFT JOIN tipo_suporte tp ON c.id_suporte = tp.id
       ORDER BY c.id
     `);
     res.json(result.rows);

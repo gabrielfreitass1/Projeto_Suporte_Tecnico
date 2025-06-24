@@ -15,8 +15,7 @@ interface RegisterData {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api'; // Ajuste para a URL do seu backend
-
+  private apiUrl = 'http://localhost:3000/API';
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {

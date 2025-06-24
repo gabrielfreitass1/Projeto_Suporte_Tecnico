@@ -13,6 +13,9 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { TextareaModule } from 'primeng/textarea';
+import { UserService } from '../../services/user.service';
+import { ChamadosService } from '../../services/chamados.service';
+import { InteracoesService } from '../../services/interacoes.service';
 
 interface Chamado {
   id: string;
@@ -49,6 +52,9 @@ interface Chamado {
 })
 export class TableChamadosComponent implements OnInit {
   @ViewChild('dt') dt!: Table;
+  constructor(private userService: UserService) {}
+  //constructor(private chamadosService: ChamadosService) {}
+  //constructor(private interacoesService: UserService) {}
 
   chamados: Chamado[] = [];
   chamadoDialog: boolean = false;
@@ -74,8 +80,13 @@ export class TableChamadosComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.loadChamados();
-  }
+  this.loadChamados();
+  this.userService.getUsuarios().subscribe({
+    next: (usuarios: any) => console.log('Usuários:', usuarios),
+    error: (err: any) => console.error('Erro ao buscar usuários:', err)
+  });
+}
+
 
   loadChamados() {
     this.chamados = [
